@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import FetchDemo from "./provaFetch/FetchDemo";
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,7 +12,11 @@ const Wrapper = styled.div`
 `;
 
 function App() {
-  return <Wrapper>CIAO</Wrapper>;
+  return (
+    <Wrapper>
+      <FetchDemo />
+    </Wrapper>
+  );
 }
 
 export default App;
