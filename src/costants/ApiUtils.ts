@@ -1,5 +1,11 @@
-// Base url
+/*********************
+ * Base url
+ *********************/
 export const BASE_URL = "http://localhost:8000/api/v1/";
+
+/*********************
+ * Types
+ *********************/
 
 // Enum for Api request method
 export enum ApiMethod {
@@ -45,12 +51,17 @@ export interface IRequestApiHandler {
   url: string;
   method: ApiMethod;
   urlParams?: number[];
-  body?: any;
+  payload?: any;
   queryParams?: IQueryParams[];
 }
 
+/*********************
+ * useFetch:
+ * custom builders
+ *********************/
+
 // set custom url
-export const customUrlParams = (params?: number[]) => {
+export const customUrlParamsBuilder = (params?: number[]) => {
   const path = params?.map((param) => `/${param}`);
 
   return path?.join("") || "";

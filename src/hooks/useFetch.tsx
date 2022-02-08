@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   ApiMethod,
   BASE_URL,
-  customUrlParamsBuilder,
+  customUrlParams,
   IRequestApiHandler,
   QueryParamsBuilder,
 } from "../costants/ApiUtils";
@@ -15,7 +15,7 @@ const useFetch = () => {
   });
 
   // Set custom request settings
-  const apiMode = (method: ApiMethod, payload: any) => {
+  const apiMode = (method: ApiMethod, body: any) => {
     let mode: RequestInit = {
       method: method,
       mode: "cors", // For localhost only
@@ -23,10 +23,8 @@ const useFetch = () => {
         "Content-Type": "application/json",
       },
       body:
-        // Set JSON payload if method match
-        method === "PATCH" || method === "POST"
-          ? JSON.stringify(payload)
-          : null,
+        // Set JSON body if method match
+        method === "PATCH" || method === "POST" ? JSON.stringify(body) : null,
     };
     return mode;
   };
@@ -34,22 +32,16 @@ const useFetch = () => {
   // handler for lauch api request with patameters
   const requestApiHandler: (
     payload: IRequestApiHandler
-  ) => Promise<any> = async ({
-    url,
-    method,
-    urlParams,
-    payload,
-    queryParams,
-  }) => {
+  ) => Promise<any> = async ({ url, method, urlParams, body, queryParams }) => {
     // Set full url path with params
     const urlBuilder =
       BASE_URL +
       url +
-      customUrlParamsBuilder(urlParams) +
+      customUrlParams(urlParams) +
       QueryParamsBuilder(queryParams);
 
     // Fetching resource from url with custom parameters
-    const apiResponse = await fetch(urlBuilder, apiMode(method, payload)).then(
+    const apiResponse = await fetch(urlBuilder, apiMode(method, body)).then(
       (response) => {
         // Checking reqeust status
         return !response.ok

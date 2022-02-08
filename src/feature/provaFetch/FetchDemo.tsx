@@ -23,7 +23,7 @@ const FetchDemo: React.FC = () => {
           requestApiHandler({
             url: "recipe",
             method: ApiMethod.ADD,
-            payload: {
+            body: {
               name: "Nuova ricetta da React",
               description: "Nuova descrizione della ricetta da React",
               stat_id: 4,
@@ -40,7 +40,7 @@ const FetchDemo: React.FC = () => {
             url: "recipe",
             urlParams: [1],
             method: ApiMethod.UPDATE,
-            payload: {
+            body: {
               name: "Nuova ricetta aggiornata da React",
               description:
                 "Nuova descrizione della ricetta aggiornata da React",
