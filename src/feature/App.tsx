@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import FetchDemo from "./provaFetch/FetchDemo";
+import Demo from "./provaFetch/Demo";
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 function App() {
   return (
     <Wrapper>
-      <FetchDemo />
+      <Demo />
     </Wrapper>
   );
 }
