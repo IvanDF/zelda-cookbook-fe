@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { Theme } from "../../costants/Theme";
+import { Theme } from "../../../costants/Theme";
 import { IGeneralStyles, IText, TextType } from "./IText";
 
 export const commonStyles = (p: IGeneralStyles) => `
   color: ${p.color ? p.color : Theme.color.light};
-  font-size: ${p.fontSize ? p.fontSize + "px" : Theme.font.size.s24 + "px"};
+  font-size: ${p.fontSize ? p.fontSize : Theme.font.size.s24};
   font-weight: ${p.fontWeight ? p.fontWeight : Theme.font.weight.bold};
 `;
 
