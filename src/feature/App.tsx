@@ -1,20 +1,22 @@
 import styled from "styled-components";
-import Demo from "./provaFetch/Demo";
+import { TopBar } from "../components/topBar/TopBar";
+import { TextType } from "../components/ui/text/IText";
+import Text from "../components/ui/text/Text";
+import { GlobalStyle } from "../styles/globalStyle/GlobalStyle";
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 500px;
-  height: 500px;
-  background: #000;
-  color: #fff;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
 `;
 
 function App() {
   return (
     <Wrapper>
-      <Demo />
+      <GlobalStyle />
+      <TopBar />
+      <Text color="red" textType={TextType.HEADING} text="CIAO" />
     </Wrapper>
   );
 }
