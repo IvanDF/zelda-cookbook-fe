@@ -1,4 +1,4 @@
-import { createGlobalStyle, css } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 import { Theme } from "../../costants/Theme";
 
 export const Fill = () => css`
@@ -19,10 +19,12 @@ export const GlobalStyle = createGlobalStyle`
     font-size: ${Theme.font.size.s18} + "px";
     font-weight: ${Theme.font.weight.regular};
   }
-  
+
   body {
-    ${Fill}
-    background: ${Theme.color.dark};
+    width: 100vw;
+    height: 100vh;
+    background: url("https://wallpaperaccess.com/full/1193446.jpg");
+    background-size: cover;
   }`;
 
 enum DFlexEnum {
@@ -97,4 +99,11 @@ export const ResetInput = () => css`
   border: none;
   padding: 0;
   margin: 0;
+`;
+
+export const Container = styled.div`
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
 `;
