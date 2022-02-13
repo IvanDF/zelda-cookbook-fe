@@ -1,11 +1,19 @@
 import styled, { createGlobalStyle, css } from "styled-components";
-import { Theme } from "../../costants/Theme";
+import { Theme, ThemeExtra } from "../../costants/Theme";
+import {
+  CursorType,
+  IDFlex,
+  PositionPosEnum,
+  PositionTypePosEnum,
+} from "./IGlobalStyle";
 
+// Fill
 export const Fill = () => css`
   width: 100%;
   height: 100%;
 `;
 
+// Base style
 export const GlobalStyle = createGlobalStyle`
   *,
   *::before,
@@ -16,7 +24,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     // SETTING GLOBAL FONT
     font-family: 'Kodchasan', sans-serif;
-    font-size: ${Theme.font.size.s18} + "px";
+    font-size: ${Theme.font.size.s18};
     font-weight: ${Theme.font.weight.regular};
   }
 
@@ -24,48 +32,32 @@ export const GlobalStyle = createGlobalStyle`
     width: 100vw;
     height: 100vh;
     background: url("https://wallpaperaccess.com/full/1193446.jpg");
+    backdrop-filter: ${ThemeExtra.blur.b10};
     background-size: cover;
   }`;
 
-enum DFlexEnum {
-  CENTER = "CENTER",
-  LEFT = "LEFT",
-  RIGHT = "RIGHT",
-  SB = "SB",
-}
-
-export const DFlex = (type?: DFlexEnum) => css`
+// Display flex handler
+export const DFlex = (type?: IDFlex) => css`
   display: flex;
-  ${type === DFlexEnum.CENTER
+  ${type === IDFlex.CENTER
     ? `
     justify-content: center;
     align-items: center;`
-    : type === DFlexEnum.LEFT
+    : type === IDFlex.LEFT
     ? `
     justify-content: center;
     align-items: center;`
-    : type === DFlexEnum.RIGHT
+    : type === IDFlex.RIGHT
     ? `
     justify-content: flex-end;
     align-items: center;`
-    : type === DFlexEnum.SB &&
+    : type === IDFlex.SB &&
       `
     justify-content: space-between;
     align-items: center;`}
 `;
 
-enum PositionPosEnum {
-  XY = "XY",
-  X = "X",
-  Y = "Y",
-}
-
-enum PositionTypePosEnum {
-  AB = "AB",
-  RL = "RL",
-  FX = "FX",
-}
-
+// Position handler
 export const Position = (
   type: PositionTypePosEnum,
   pos?: PositionPosEnum
@@ -93,6 +85,7 @@ export const Position = (
       `}
 `;
 
+// Reset default input styles
 export const ResetInput = () => css`
   background: none;
   outline: none;
@@ -101,6 +94,14 @@ export const ResetInput = () => css`
   margin: 0;
 `;
 
+// Cursor handler
+export const Cursor = (type: CursorType) => css`
+  cursor: ${type === CursorType.POINT
+    ? "pointer"
+    : type === CursorType.NOT_ALWD && "not-allowed"};
+`;
+
+// Container
 export const Container = styled.div`
   width: 1200px;
   max-width: 100%;
