@@ -1,16 +1,16 @@
 import styled from "styled-components";
-import { Container } from "../../styles/globalStyle/GlobalStyle";
+import { Theme, ThemeExtra } from "../../costants/Theme";
+import { Container, DFlex } from "../../styles/globalStyle/GlobalStyle";
+import { IDFlex } from "../../styles/globalStyle/IGlobalStyle";
 
 export const Wrapper = styled.div`
-  display: flex;
+  ${DFlex()}
   width: 100%;
   height: 40px;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(5px);
+  background: ${ThemeExtra.background.bgBlack02};
+  backdrop-filter: ${ThemeExtra.blur.b10};
   ${Container} {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: #fff;
+    ${DFlex(IDFlex.SB)}
+    color: ${Theme.color.active};
   }
 `;
