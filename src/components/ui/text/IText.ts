@@ -5,19 +5,21 @@ export interface IText {
   // Name
   textType: string;
   // Font properties
-  fontSize?: number;
+  fontSize?: string;
   fontWeight?: number;
   // Text styles
   color: string;
   text: string | JsxElement;
+  uppercase?: boolean;
 }
 
 // Interface for texts general styles
 export interface IGeneralStyles {
   color: string;
   // Font properties
-  fontSize?: number;
+  fontSize?: string;
   fontWeight?: number;
+  uppercase?: boolean;
 }
 
 // Type of text

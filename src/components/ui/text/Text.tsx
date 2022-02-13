@@ -7,6 +7,7 @@ export const commonStyles = (p: IGeneralStyles) => `
   color: ${p.color ? p.color : Theme.color.light};
   font-size: ${p.fontSize ? p.fontSize : Theme.font.size.s24};
   font-weight: ${p.fontWeight ? p.fontWeight : Theme.font.weight.bold};
+  ${p.uppercase && "text-transform: uppercase;"}
 `;
 
 const Heading = styled.h2<IGeneralStyles>`
