@@ -41,9 +41,43 @@ export const Theme = {
   },
 };
 
-export const Effects = {
-  // Effects
-  blur: {},
+// Covert hex colors to rgba
+export const hexToRgba = (hex: string, opacity: number) => {
+  let r: string = "0";
+  let g: string = "0";
+  let b: string = "0";
+
+  // 3 digits
+  if (hex.length === 4) {
+    r = "0x" + hex[1] + hex[1];
+    g = "0x" + hex[2] + hex[2];
+    b = "0x" + hex[3] + hex[3];
+
+    // 6 digits
+  } else if (hex.length === 7) {
+    r = "0x" + hex[1] + hex[2];
+    g = "0x" + hex[3] + hex[4];
+    b = "0x" + hex[5] + hex[6];
+  }
+
+  return `rgba(${+r}, ${+g}, ${+b}, ${opacity})`;
+};
+
+// Extra themes
+export const ThemeExtra = {
+  // Blur
+  blur: {
+    b10: "blur(10px)",
+  },
+
+  // Shadow
   shadow: {},
+
+  // Transition
   transition: {},
+
+  // Background
+  background: {
+    bgBlack02: `${hexToRgba(Theme.color.black, Theme.opacity.o2)}`,
+  },
 };
