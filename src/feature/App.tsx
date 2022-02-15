@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { BottomBar } from "../components/BottomBar/BottomBar";
 import { TopBar } from "../components/topBar/TopBar";
-import { TextType } from "../components/ui/text/IText";
-import Text from "../components/ui/text/Text";
 import { GlobalStyle } from "../styles/globalStyle/GlobalStyle";
+import { Bag } from "./sections/Bag";
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,7 +17,7 @@ function App() {
     <Wrapper>
       <GlobalStyle />
       <TopBar />
-      <Text color="red" textType={TextType.HEADING} text="CIAO" />
+      <Bag />
       <BottomBar />
     </Wrapper>
   );
