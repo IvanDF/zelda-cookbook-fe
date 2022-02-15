@@ -21,4 +21,6 @@ export const LeftWrapper = styled.div`
 export const MenuWrapper = styled.div`
   ${Cursor(CursorType.POINT)}
 `;
-export const RightWrapper = styled.div``;
+export const RightWrapper = styled.div`
+  ${Cursor(CursorType.POINT)}
+`;

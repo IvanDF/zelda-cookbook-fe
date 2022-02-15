@@ -16,7 +16,7 @@ export const TopBar: React.FC = () => {
   return (
     <Wrapper>
       <Container>
-        <LeftWrapper>
+        <LeftWrapper onClick={() => console.log("")}>
           <Icon name={IconType.SEARCH} />
         </LeftWrapper>
         <MenuWrapper>
@@ -28,7 +28,7 @@ export const TopBar: React.FC = () => {
             uppercase
           />
         </MenuWrapper>
-        <RightWrapper>
+        <RightWrapper onClick={() => console.log("")}>
           <Icon name={IconType.FILTERS} />
         </RightWrapper>
       </Container>
