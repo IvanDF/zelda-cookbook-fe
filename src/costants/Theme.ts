@@ -4,7 +4,7 @@ export const Theme = {
     black: "#000000",
     white: "#FFFFFF",
     // Basic Colors
-    dark: "#333333",
+    dark: "#121212",
     light: "#DDDDDD",
 
     active: "#E5FCFC", // Active color
@@ -79,5 +79,6 @@ export const ThemeExtra = {
   // Background
   background: {
     bgBlack02: `${hexToRgba(Theme.color.black, Theme.opacity.o2)}`,
+    bgDark06: `${hexToRgba(Theme.color.dark, Theme.opacity.o6)}`,
   },
 };
