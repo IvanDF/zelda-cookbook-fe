@@ -25,8 +25,8 @@ export const LeftWrapper = styled.div`
     top: 2px;
     left: -33px;
     z-index: 3;
+    ${Cursor(CursorType.POINT)}
   }
-  ${Cursor(CursorType.POINT)}
 `;
 
 // Menu wrapper
@@ -46,7 +46,7 @@ export const InputSearchWrapper = styled.div<{ showNavbar: boolean }>`
   transition: left 200ms ease;
 `;
 
-// Icon Wrapper
+// Icon
 export const IconWrapper = styled.div<{ showNavbar: boolean }>`
   position: relative;
   left: ${(p) => (p.showNavbar ? "0" : "-80%")};
