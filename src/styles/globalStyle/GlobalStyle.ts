@@ -65,8 +65,8 @@ export const Position = (
   position: ${type === PositionTypePosEnum.AB
     ? "absolute"
     : type === PositionTypePosEnum.RL
-    ? "position: relative"
-    : type === PositionTypePosEnum.FX && "position: fixed"};
+    ? "relative"
+    : type === PositionTypePosEnum.FX && "fixed"};
   ${pos === PositionPosEnum.XY
     ? `
       top: 50%;
@@ -92,6 +92,7 @@ export const ResetInput = () => css`
   border: none;
   padding: 0;
   margin: 0;
+  -webkit-appearance: none;
 `;
 
 // Cursor handler
