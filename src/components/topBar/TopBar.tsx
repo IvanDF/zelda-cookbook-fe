@@ -2,48 +2,54 @@ import React, { useState } from "react";
 import { Theme } from "../../costants/Theme";
 import useOutsideClickRef from "../../hooks/useOutsideClick";
 import { Container } from "../../styles/globalStyle/GlobalStyle";
-import { Icon } from "../ui/icon/Icon";
 import { IconType } from "../ui/icon/IconType";
-import { Input } from "../ui/input/Input";
+import Input from "../ui/input/Input";
+import { IInputType } from "../ui/input/InputTypes";
 import { TextType } from "../ui/text/IText";
 import Text from "../ui/text/Text";
 import {
-  IconWrapper,
+  Circle,
   InputSearchWrapper,
+  InputSelectWrapper,
   LeftWrapper,
+  MenuCirlceNav,
   MenuWrapper,
   RightWrapper,
   Wrapper,
 } from "./TopBarStyles";
 
 export const TopBar: React.FC = () => {
-  const [showNavbar, setShowNavbar] = useState(false);
-  const { ref } = useOutsideClickRef(setShowNavbar);
+  // States for show/hide inputs
+  const [showSearchbar, setShowSearchbar] = useState(false);
+  const [showSelect, setShowSelect] = useState(false);
+
+  // References for show/hide inputs
+  const [searchRef] = useOutsideClickRef(setShowSearchbar);
+  const [selectRef] = useOutsideClickRef(setShowSelect);
 
   return (
     <Wrapper>
       <Container>
         {/* Left Wrapper */}
-        <LeftWrapper onClick={() => console.log("")} ref={ref}>
+        <LeftWrapper ref={searchRef} isSearchbarActive={showSearchbar}>
           {/* Searchbar Wrapper */}
-          <InputSearchWrapper showNavbar={showNavbar}>
+          <InputSearchWrapper showNavbar={showSearchbar}>
             <Input
-              ariaLabel="searcbar"
-              name="searcbar"
-              onchange={(e) => console.log(e)}
-              type="searchbar"
-              placeholder="Cerca"
+              icon={IconType.SEARCH}
+              isIconRight
+              attributes={{
+                InputType: IInputType.SEARCH,
+                ariaLabel: "searchbar",
+                name: "searchbar",
+                placeholder: "Cerca la ricetta",
+                setFocus: (e) => setShowSearchbar(e),
+                onchange: (e) => console.log(e),
+              }}
             />
           </InputSearchWrapper>
-          {/* Icon Wrapper */}
-          <IconWrapper
-            showNavbar={showNavbar}
-            onClick={() => setShowNavbar(true)}
-          >
-            <Icon name={IconType.SEARCH} />
-          </IconWrapper>
         </LeftWrapper>
-        {/* Meny Wrapper */}
+
+        {/* Menu Wrapper */}
         <MenuWrapper>
           <Text
             color={Theme.color.active}
@@ -52,10 +58,44 @@ export const TopBar: React.FC = () => {
             text="Borsa"
             uppercase
           />
+
+          {/* Menu navbar Wrapper */}
+          <MenuCirlceNav>
+            <Circle />
+            <Circle active />
+            <Circle />
+          </MenuCirlceNav>
         </MenuWrapper>
+
         {/* Right Wrapper */}
-        <RightWrapper onClick={() => console.log("")}>
-          <Icon name={IconType.FILTERS} />
+        <RightWrapper ref={selectRef} isSelectActive={showSelect}>
+          {/* Icon Wrapper */}
+
+          <InputSelectWrapper showNavbar={showSelect}>
+            <Input
+              icon={IconType.FILTERS}
+              attributes={{
+                InputType: IInputType.SELECT,
+                ariaLabel: "select",
+                name: "select",
+                setFocus: (e) => setShowSelect(e),
+                optionsList: [
+                  {
+                    label: "Tutti",
+                    value: "ALL",
+                  },
+                  {
+                    label: "Alfabetico",
+                    value: "az",
+                  },
+                  {
+                    label: "Nome",
+                    value: "name",
+                  },
+                ],
+              }}
+            />
+          </InputSelectWrapper>
         </RightWrapper>
       </Container>
     </Wrapper>
