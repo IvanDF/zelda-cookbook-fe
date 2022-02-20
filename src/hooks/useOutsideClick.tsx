@@ -20,7 +20,7 @@ const useOutsideClickRef = (handler: (e: boolean) => void) => {
     };
   }, [ref, handler]);
 
-  return { ref };
+  return [ref];
 };
 
 export default useOutsideClickRef;
