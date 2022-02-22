@@ -1,14 +1,12 @@
 import React, { useMemo, useState } from "react";
 import useOutsideClickRef from "../../../hooks/useOutsideClick";
+import {
+  TopCorners,
+  BottomCorners,
+} from "../../../styles/globalStyle/GlobalStyle";
 import { Icon } from "../icon/Icon";
 import { IconType } from "../icon/IconType";
-import {
-  BottomCorners,
-  IconWrapper,
-  InputWrapper,
-  TopCorners,
-  Wrapper,
-} from "./commonStyles";
+import { IconWrapper, InputWrapper, Wrapper } from "./commonStyles";
 import { InputSearch } from "./inputSearch/InputSearch";
 import { InputSelect } from "./inputSelect/InputSelect";
 import { IInputSearch, IInputSelect, IInputType } from "./InputTypes";
@@ -60,13 +58,13 @@ const Input: React.FC<{
         isVisible={!icon ? true : isInputVisible}
       >
         {/* Top corners */}
-        <TopCorners focused={focused} />
+        <TopCorners focused={focused} borderWidth={1} />
 
         {/* Memo select input type */}
         {InputTypeHandler}
 
         {/* Bottom corners */}
-        <BottomCorners focused={focused} />
+        <BottomCorners focused={focused} borderWidth={1} />
       </InputWrapper>
     </Wrapper>
   );
