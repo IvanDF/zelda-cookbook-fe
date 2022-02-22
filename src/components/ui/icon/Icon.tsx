@@ -71,5 +71,37 @@ export const Icon: React.FC<IIcon> = ({
           />
         </svg>
       );
+    case IconType.PREV_ICON:
+      return (
+        <svg
+          width={width}
+          height={height}
+          viewBox="0 0 53 52"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M27.5 26L37 52L16 26L37 0L27.5 26Z"
+            fill={color}
+            fillOpacity="0.65"
+          />
+        </svg>
+      );
+    case IconType.NEXT_ICON:
+      return (
+        <svg
+          width={width}
+          height={height}
+          viewBox="0 0 53 52"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M25.5 26L16 0L37 26L16 52L25.5 26Z"
+            fill={color}
+            fillOpacity="0.65"
+          />
+        </svg>
+      );
   }
 };
