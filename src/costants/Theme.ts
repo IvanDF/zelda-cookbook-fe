@@ -68,6 +68,7 @@ export const ThemeExtra = {
   // Blur
   blur: {
     b10: "blur(10px)",
+    b15: "blur(15px)",
   },
 
   // Shadow
