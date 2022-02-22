@@ -77,17 +77,3 @@ export const RightWrapper = styled.div<{ isSelectActive: boolean }>`
     ${Cursor(CursorType.POINT)}
   }
 `;
-
-//Searchbar Wrapper
-export const InputSearchWrapper = styled.div<{ showNavbar: boolean }>`
-  position: relative;
-  /* left: ${(p) => (p.showNavbar ? "0" : "-200%")}; */
-  transition: left 200ms ease;
-`;
-
-//Searchbar Wrapper
-export const InputSelectWrapper = styled.div<{ showNavbar: boolean }>`
-  position: relative;
-  /* left: ${(p) => (p.showNavbar ? "0" : "200%")}; */
-  transition: left 200ms ease;
-`;

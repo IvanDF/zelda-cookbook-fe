@@ -9,8 +9,6 @@ import { TextType } from "../ui/text/IText";
 import Text from "../ui/text/Text";
 import {
   Circle,
-  InputSearchWrapper,
-  InputSelectWrapper,
   LeftWrapper,
   MenuCirlceNav,
   MenuWrapper,
@@ -18,7 +16,7 @@ import {
   Wrapper,
 } from "./TopBarStyles";
 
-export const TopBar: React.FC = () => {
+const TopBar: React.FC = () => {
   // States for show/hide inputs
   const [showSearchbar, setShowSearchbar] = useState(false);
   const [showSelect, setShowSelect] = useState(false);
@@ -30,23 +28,20 @@ export const TopBar: React.FC = () => {
   return (
     <Wrapper>
       <Container>
-        {/* Left Wrapper */}
+        {/* Searchbar Wrapper */}
         <LeftWrapper ref={searchRef} isSearchbarActive={showSearchbar}>
-          {/* Searchbar Wrapper */}
-          <InputSearchWrapper showNavbar={showSearchbar}>
-            <Input
-              icon={IconType.SEARCH}
-              isIconRight
-              attributes={{
-                InputType: IInputType.SEARCH,
-                ariaLabel: "searchbar",
-                name: "searchbar",
-                placeholder: "Cerca la ricetta",
-                setFocus: (e) => setShowSearchbar(e),
-                onchange: (e) => console.log(e),
-              }}
-            />
-          </InputSearchWrapper>
+          <Input
+            icon={IconType.SEARCH}
+            isIconRight
+            attributes={{
+              InputType: IInputType.SEARCH,
+              ariaLabel: "searchbar",
+              name: "searchbar",
+              placeholder: "Cerca la ricetta",
+              setFocus: (e) => setShowSearchbar(e),
+              onchange: (e) => console.log(e),
+            }}
+          />
         </LeftWrapper>
 
         {/* Menu Wrapper */}
@@ -67,37 +62,35 @@ export const TopBar: React.FC = () => {
           </MenuCirlceNav>
         </MenuWrapper>
 
-        {/* Right Wrapper */}
+        {/* Select Wrapper */}
         <RightWrapper ref={selectRef} isSelectActive={showSelect}>
-          {/* Icon Wrapper */}
-
-          <InputSelectWrapper showNavbar={showSelect}>
-            <Input
-              icon={IconType.FILTERS}
-              attributes={{
-                InputType: IInputType.SELECT,
-                ariaLabel: "select",
-                name: "select",
-                setFocus: (e) => setShowSelect(e),
-                optionsList: [
-                  {
-                    label: "Tutti",
-                    value: "ALL",
-                  },
-                  {
-                    label: "Alfabetico",
-                    value: "az",
-                  },
-                  {
-                    label: "Nome",
-                    value: "name",
-                  },
-                ],
-              }}
-            />
-          </InputSelectWrapper>
+          <Input
+            icon={IconType.FILTERS}
+            attributes={{
+              InputType: IInputType.SELECT,
+              ariaLabel: "select",
+              name: "select",
+              setFocus: (e) => setShowSelect(e),
+              optionsList: [
+                {
+                  label: "Tutti",
+                  value: "ALL",
+                },
+                {
+                  label: "Alfabetico",
+                  value: "az",
+                },
+                {
+                  label: "Nome",
+                  value: "name",
+                },
+              ],
+            }}
+          />
         </RightWrapper>
       </Container>
     </Wrapper>
   );
 };
+
+export default TopBar;
