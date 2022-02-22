@@ -4,6 +4,8 @@ export enum IconType {
    ************************/
   SEARCH = "SEARCH",
   FILTERS = "FILTERS",
+  NEXT_ICON = "NEXT_ICON",
+  PREV_ICON = "PREV_ICON",
 }
 
 export interface IIcon {
