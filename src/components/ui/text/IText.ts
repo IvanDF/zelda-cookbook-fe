@@ -1,21 +1,15 @@
 import { JsxElement } from "typescript";
 
 //  Iterface for component
-export interface IText {
-  // Name
-  textType: string;
-  // Font properties
-  fontSize?: string;
-  fontWeight?: number;
-  // Text styles
-  color: string;
+export interface IText extends IGeneralStyles {
   text: string | JsxElement;
-  uppercase?: boolean;
 }
 
 // Interface for texts general styles
 export interface IGeneralStyles {
-  color: string;
+  // Name
+  textType: TextType;
+  color?: string;
   // Font properties
   fontSize?: string;
   fontWeight?: number;
