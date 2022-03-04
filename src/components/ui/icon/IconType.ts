@@ -6,6 +6,7 @@ export enum IconType {
   FILTERS = "FILTERS",
   NEXT_ICON = "NEXT_ICON",
   PREV_ICON = "PREV_ICON",
+  CLOSE = "CLOSE",
 }
 
 export interface IIcon {
@@ -13,4 +14,5 @@ export interface IIcon {
   width?: number;
   height?: number;
   color?: string;
+  onClick?: () => void;
 }

@@ -7,6 +7,7 @@ export const Icon: React.FC<IIcon> = ({
   width = 24,
   height = 24,
   color = Theme.color.light,
+  onClick,
 }) => {
   switch (name) {
     /************************
@@ -100,6 +101,29 @@ export const Icon: React.FC<IIcon> = ({
             d="M25.5 26L16 0L37 26L16 52L25.5 26Z"
             fill={color}
             fillOpacity="0.65"
+          />
+        </svg>
+      );
+    case IconType.CLOSE:
+      return (
+        <svg
+          onClick={onClick}
+          width={width}
+          height={height}
+          viewBox="0 0 20 20"
+          fill="none"
+        >
+          <path
+            d="M3 17L17.1421 2.85786"
+            stroke={color}
+            strokeWidth="5"
+            strokeLinecap="round"
+          />
+          <path
+            d="M3 3L17.1421 17.1421"
+            stroke={color}
+            strokeWidth="5"
+            strokeLinecap="round"
           />
         </svg>
       );
