@@ -7,11 +7,11 @@ import {
   PositionTypePosEnum,
 } from "../../styles/globalStyle/IGlobalStyle";
 
-export const BorderWrapper = styled.div<{ isActive: boolean }>`
+export const BorderWrapper = styled.div<{ isActive: boolean; device: string }>`
   ${Position(PositionTypePosEnum.RL)}
   ${DFlex(IDFlex.CENTER)}
-  width: 140px;
-  height: 140px;
+  width: ${(p) => (p.device === "DESKTOP" ? "140px" : "80px")};
+  height: ${(p) => (p.device === "DESKTOP" ? "140px" : "80px")};
   padding: 2px;
   border-radius: 7px;
   border: solid ${Theme.color.dark} 3px;
