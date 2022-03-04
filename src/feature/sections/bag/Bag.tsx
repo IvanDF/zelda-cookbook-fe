@@ -12,8 +12,8 @@ import {
   BoxWrapper,
   BoxWrapperBorder,
   DescriptionWrapper,
+  DetailModal,
   DetailWrapperDesktop,
-  DetailWrapperMobile,
   Heart,
   Img,
   ImgWrapper,
@@ -24,9 +24,12 @@ import {
 const Bag: React.FC = () => {
   const { breakpoint } = useWindowSize();
 
+  // Mobile modal state
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
   const [index, setIndex] = useState<number | null>(null);
 
-  const list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  const list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   return (
     <Wrapper>
@@ -38,7 +41,10 @@ const Bag: React.FC = () => {
             {list.map((el: number, i: number) => {
               return (
                 <SliderBox
-                  onClick={() => setIndex(i)}
+                  onClick={() => {
+                    setIndex(i);
+                    setIsModalOpen(!isModalOpen);
+                  }}
                   isActive={index === i}
                   key={i}
                 >
@@ -73,7 +79,33 @@ const Bag: React.FC = () => {
           </BoxWrapperBorder>
         </DetailWrapperDesktop>
       ) : (
-        <DetailWrapperMobile>Detail</DetailWrapperMobile>
+        <DetailModal device={breakpoint} isOpen={isModalOpen}>
+          <Icon
+            name={IconType.CLOSE}
+            height={32}
+            width={32}
+            onClick={() => setIsModalOpen(!isModalOpen)}
+          />
+          <ImgWrapper>
+            <Img />
+          </ImgWrapper>
+          <BoxWrapperBorder>
+            <BoxWrapper>
+              <DescriptionWrapper>
+                <Text textType={TextType.HEADING} text="Mela" />
+                <Heart />
+                <Heart />
+                <Heart />
+                <Heart />
+                <Heart />
+                <Text
+                  textType={TextType.TEXT}
+                  text="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam minus porro magni debitis nam, perferendis, voluptatibus in optio odio ab tempora. Porro iste labore placeat in quaerat, reiciendis incidunt? Perferendis?"
+                />
+              </DescriptionWrapper>
+            </BoxWrapper>
+          </BoxWrapperBorder>
+        </DetailModal>
       )}
     </Wrapper>
   );

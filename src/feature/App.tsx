@@ -8,8 +8,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
   width: 100vw;
+  height: 100%;
 `;
 
 function App() {

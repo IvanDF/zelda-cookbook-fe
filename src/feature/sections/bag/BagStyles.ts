@@ -1,15 +1,24 @@
 import styled from "styled-components";
 import { Theme, ThemeExtra } from "../../../costants/Theme";
 import { IBreakpoint } from "../../../hooks/useWindowSize";
-import { DFlex, Fill, Position } from "../../../styles/globalStyle/GlobalStyle";
 import {
+  Cursor,
+  DFlex,
+  Fill,
+  Position,
+} from "../../../styles/globalStyle/GlobalStyle";
+import {
+  CursorType,
   IDFlex,
+  PositionPosEnum,
   PositionTypePosEnum,
 } from "../../../styles/globalStyle/IGlobalStyle";
 
 export const Wrapper = styled.div`
   ${DFlex(IDFlex.CENTER)}
   ${Fill}
+  width: 1600px;
+  max-width: 100%;
 `;
 
 export const BagWrapper = styled.div<{ device: IBreakpoint }>`
@@ -21,8 +30,9 @@ export const BagWrapper = styled.div<{ device: IBreakpoint }>`
 
 export const DetailWrapperDesktop = styled.div`
   ${DFlex(IDFlex.RIGHT)}
-  flex-direction: column;
+  height: 100%;
   width: 30%;
+  flex-direction: column;
 `;
 
 export const BoxWrapperBorder = styled.div`
@@ -47,8 +57,8 @@ export const BoxWrapper = styled.div`
 
 export const ImgWrapper = styled.div`
   width: 100%;
-  height: 600px;
-  background: #000;
+  height: 100%;
+  max-height: 350px;
 `;
 
 export const Img = styled.img`
@@ -89,9 +99,37 @@ export const Heart = styled.span`
 
 export const DescriptionWrapper = styled.div``;
 
-export const DetailWrapperMobile = styled.div`
-  position: absolute;
-  display: none;
+export const DetailModal = styled.div<{ device: string; isOpen: boolean }>`
+  ${Position(PositionTypePosEnum.AB, PositionPosEnum.XY)}
+  ${DFlex(IDFlex.CENTER)}
+  flex-direction: column;
+  width: ${(p) => (p.isOpen ? "100%" : "0")};
+  height: ${(p) => (p.isOpen ? "100%" : "0")};
+  overflow: ${(p) => (p.isOpen ? "visible" : "hidden")};
+  background: ${ThemeExtra.background.bgDark06};
+  backdrop-filter: ${ThemeExtra.blur.b10};
+  transition: all 250ms ease;
+  z-index: 2;
+  & > svg:first-child {
+    ${Position(PositionTypePosEnum.AB)}
+    right: 20px;
+    top: 20px;
+    ${Cursor(CursorType.POINT)}
+  }
+  ${BoxWrapperBorder} {
+    opacity: ${(p) => (p.isOpen ? 1 : 0)};
+    margin-bottom: 0;
+    align-self: auto;
+    width: ${(p) => (p.device === "MOBILE" ? "95%" : "60%")};
+    text-align: center;
+    backdrop-filter: 0;
+    transition: opacity 200ms 150ms ease;
+    ${DescriptionWrapper} {
+      & > * {
+        margin: 15px 10px;
+      }
+    }
+  }
 `;
 
 export const BagMenu = styled.div`
