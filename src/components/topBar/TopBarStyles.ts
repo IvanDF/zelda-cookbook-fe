@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
   position: relative;
   ${DFlex()}
   width: 100%;
-  height: 80px;
+  padding: 20px 0;
   background: ${ThemeExtra.background.bgBlack02};
   backdrop-filter: ${ThemeExtra.blur.b10};
   ${Container} {
