@@ -16,35 +16,80 @@ import {
 } from "../BagStyles";
 
 export const BagItems: React.FC<{
-  list: any;
+  ingredients: any;
+  recipes: any;
   index: number | null;
   setIndex: any;
   isModalOpen: boolean;
   setIsModalOpen: any;
   breakpoint: IBreakpoint;
-}> = ({ list, index, setIndex, setIsModalOpen, isModalOpen, breakpoint }) => {
+}> = ({
+  ingredients,
+  recipes,
+  index,
+  setIndex,
+  setIsModalOpen,
+  isModalOpen,
+  breakpoint,
+}) => {
   const [sliderIndex, setSliderIndex] = useState(0);
+  const [list, setList] = useState<any[]>(ingredients);
+  const [actveElement, setActiveElement] = useState("INGREDIENTS");
 
   return (
     <BagWrapper device={breakpoint}>
       <SubMenu>
-        <BagMenu>Ingredienti</BagMenu>
-        <BagMenu>Ricette</BagMenu>
-        <BagMenu>Preferiti</BagMenu>
+        <BagMenu
+          isActive={actveElement === "INGREDIENTS"}
+          onClick={() => {
+            if (actveElement !== "INGREDIENTS") {
+              setList(ingredients);
+              setSliderIndex(0);
+              setActiveElement("INGREDIENTS");
+            }
+          }}
+        >
+          Ingredienti
+        </BagMenu>
+        <BagMenu
+          isActive={actveElement === "RECIPES"}
+          onClick={() => {
+            if (actveElement !== "RECIPES") {
+              setList(recipes);
+              setSliderIndex(0);
+              setActiveElement("RECIPES");
+            }
+          }}
+        >
+          Ricette
+        </BagMenu>
       </SubMenu>
       <BagSlider>
         <Icon
           name={IconType.PREV_ICON}
           width={64}
           height={64}
-          onClick={() =>
-            setSliderIndex(
-              sliderIndex === 0 ? list.length - 1 : sliderIndex - 1
-            )
-          }
+          onClick={() => {
+            if (sliderIndex === 0) {
+              list[sliderIndex].map((el: any) => {
+                if (el.name.includes("Ricetta")) {
+                  setSliderIndex(list.length - 1);
+                  setList(ingredients);
+                  setActiveElement("INGREDIENTS");
+                } else {
+                  console.log("FINE");
+                }
+              });
+            } else {
+              setSliderIndex(sliderIndex - 1);
+            }
+          }}
         />
         <SliderGroup>
-          <Slider device={breakpoint}>
+          <Slider
+            device={breakpoint}
+            hide={actveElement === "INGREDIENTS" && sliderIndex === 0}
+          >
             {list[sliderIndex === 0 ? list.length - 1 : sliderIndex - 1].map(
               (el: any, i: number) => {
                 return (
@@ -84,7 +129,10 @@ export const BagItems: React.FC<{
               );
             })}
           </Slider>
-          <Slider device={breakpoint}>
+          <Slider
+            device={breakpoint}
+            hide={actveElement === "RECIPES" && sliderIndex === list.length - 1}
+          >
             {list[sliderIndex === list.length - 1 ? 0 : sliderIndex + 1].map(
               (el: any, i: number) => {
                 return (
@@ -109,9 +157,19 @@ export const BagItems: React.FC<{
           width={64}
           height={64}
           onClick={() => {
-            setSliderIndex(
-              sliderIndex === list.length - 1 ? 0 : sliderIndex + 1
-            );
+            if (sliderIndex === list.length - 1) {
+              list[sliderIndex].map((el: any) => {
+                if (!el.name.includes("Ricetta")) {
+                  setSliderIndex(0);
+                  setList(recipes);
+                  setActiveElement("RECIPES");
+                } else {
+                  console.log("FINE");
+                }
+              });
+            } else {
+              setSliderIndex(sliderIndex + 1);
+            }
           }}
         />
       </BagSlider>

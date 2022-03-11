@@ -6,6 +6,7 @@ import { BagItems } from "./partials/BagItems";
 
 // MOCK
 import Ingredients from "../../../mocks/ingredients.json";
+import Recipes from "../../../mocks/recipes.json";
 
 const Bag: React.FC = () => {
   const { breakpoint } = useWindowSize();
@@ -28,13 +29,15 @@ const Bag: React.FC = () => {
     return result;
   };
 
-  const sliderArray = sliderArrayHandler(Ingredients, 15);
+  const ingredients = sliderArrayHandler(Ingredients, 15);
+  const recipes = sliderArrayHandler(Recipes, 15);
 
   return (
     <Wrapper>
       <BagItems
         breakpoint={breakpoint}
-        list={sliderArray}
+        ingredients={ingredients}
+        recipes={recipes}
         index={index}
         setIndex={setIndex}
         isModalOpen={isModalOpen}
