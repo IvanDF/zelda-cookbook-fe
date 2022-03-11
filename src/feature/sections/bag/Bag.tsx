@@ -4,6 +4,9 @@ import { Wrapper } from "./BagStyles";
 import { BagItemDetail } from "./partials/BagItemDetail";
 import { BagItems } from "./partials/BagItems";
 
+// MOCK
+import Ingredients from "../../../mocks/ingredients.json";
+
 const Bag: React.FC = () => {
   const { breakpoint } = useWindowSize();
 
@@ -12,13 +15,26 @@ const Bag: React.FC = () => {
 
   const [index, setIndex] = useState<number | null>(null);
 
-  const list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  const sliderArrayHandler = (arr: any[], size: number) => {
+    let from = 0;
+    let to = size;
+    const result = [];
+    for (let i = 0; i < Math.round(arr.length / size); i++) {
+      const arrSection = arr.slice(from, to);
+      result.push(arrSection);
+      from += size;
+      to += size;
+    }
+    return result;
+  };
+
+  const sliderArray = sliderArrayHandler(Ingredients, 15);
 
   return (
     <Wrapper>
       <BagItems
         breakpoint={breakpoint}
-        list={list}
+        list={sliderArray}
         index={index}
         setIndex={setIndex}
         isModalOpen={isModalOpen}

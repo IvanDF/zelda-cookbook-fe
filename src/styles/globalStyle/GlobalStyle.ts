@@ -34,6 +34,7 @@ export const GlobalStyle = createGlobalStyle`
     background: url("https://nintendon.it/wp-content/uploads/2020/05/Zelda-wallpaper-nintendon.jpg");
     backdrop-filter: ${ThemeExtra.blur.b15};
     background-size: cover;
+    background-repeat: no-repeat;
     #root {
       height: 100%;
     }

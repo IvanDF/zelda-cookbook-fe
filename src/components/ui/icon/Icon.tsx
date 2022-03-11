@@ -80,6 +80,7 @@ export const Icon: React.FC<IIcon> = ({
           viewBox="0 0 53 52"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          onClick={onClick}
         >
           <path
             d="M27.5 26L37 52L16 26L37 0L27.5 26Z"
@@ -96,6 +97,7 @@ export const Icon: React.FC<IIcon> = ({
           viewBox="0 0 53 52"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          onClick={onClick}
         >
           <path
             d="M25.5 26L16 0L37 26L16 52L25.5 26Z"

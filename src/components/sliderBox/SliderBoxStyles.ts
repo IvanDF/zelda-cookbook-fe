@@ -29,7 +29,9 @@ export const BorderWrapper = styled.div<{ isActive: boolean; device: string }>`
 export const BoxWrapper = styled.div`
   width: 100%;
   height: 100%;
+  text-align: center;
   background: ${ThemeExtra.background.bgDark06};
   border-radius: 4px;
+  color: ${Theme.color.white};
   box-shadow: inset 0px 0px 10px 1px rgba(0, 0, 0, 0.4);
 `;

@@ -132,6 +132,11 @@ export const DetailModal = styled.div<{ device: string; isOpen: boolean }>`
   }
 `;
 
+export const SubMenu = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
 export const BagMenu = styled.div`
   ${DFlex(IDFlex.CENTER)}
   height: 60px;
@@ -142,6 +147,68 @@ export const BagSlider = styled.div`
   ${DFlex(IDFlex.CENTER)}
   width: 100%;
   padding: 10px;
+  svg {
+    z-index: 10;
+    &:first-child {
+      position: relative;
+      right: -40px;
+      height: 100%;
+      width: 119px;
+    }
+    &:last-child {
+      position: relative;
+      left: -40px;
+      height: 100%;
+      width: 119px;
+    }
+
+    cursor: pointer;
+    transition: all 250ms ease;
+    &:hover {
+      transform: scale(1.2);
+    }
+    &:active {
+      transform: scale(0.85);
+    }
+    path {
+      transition: all 250ms ease;
+    }
+    &:hover {
+      path {
+        fill: ${Theme.color.active};
+        fill-opacity: 1;
+      }
+    }
+  }
+`;
+
+export const SliderGroup = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  overflow: hidden;
+  & > div {
+    transition: all 300ms ease-in-out;
+  }
+  & > div:last-child {
+    mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0) 7%
+    );
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+  }
+  & > div:first-child {
+    mask-image: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0) 7%
+    );
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+  }
 `;
 
 export const Slider = styled.div<{ device: IBreakpoint }>`
