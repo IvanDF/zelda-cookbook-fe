@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
   position: relative;
   ${DFlex()}
   width: 100%;
-  height: 80px;
+  padding: 20px 0;
   background: ${ThemeExtra.background.bgBlack02};
   backdrop-filter: ${ThemeExtra.blur.b10};
   ${Container} {
@@ -76,18 +76,4 @@ export const RightWrapper = styled.div<{ isSelectActive: boolean }>`
     transition: all 200ms ease;
     ${Cursor(CursorType.POINT)}
   }
-`;
-
-//Searchbar Wrapper
-export const InputSearchWrapper = styled.div<{ showNavbar: boolean }>`
-  position: relative;
-  /* left: ${(p) => (p.showNavbar ? "0" : "-200%")}; */
-  transition: left 200ms ease;
-`;
-
-//Searchbar Wrapper
-export const InputSelectWrapper = styled.div<{ showNavbar: boolean }>`
-  position: relative;
-  /* left: ${(p) => (p.showNavbar ? "0" : "200%")}; */
-  transition: left 200ms ease;
 `;

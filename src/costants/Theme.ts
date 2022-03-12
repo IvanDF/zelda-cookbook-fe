@@ -6,6 +6,7 @@ export const Theme = {
     // Basic Colors
     dark: "#121212",
     light: "#DDDDDD",
+    red: "#dd0000",
 
     active: "#E5FCFC", // Active color
   },
@@ -68,6 +69,7 @@ export const ThemeExtra = {
   // Blur
   blur: {
     b10: "blur(10px)",
+    b15: "blur(15px)",
   },
 
   // Shadow
@@ -81,5 +83,12 @@ export const ThemeExtra = {
     bgBlack02: `${hexToRgba(Theme.color.black, Theme.opacity.o2)}`,
     bgBlack05: `${hexToRgba(Theme.color.black, Theme.opacity.o5)}`,
     bgDark06: `${hexToRgba(Theme.color.dark, Theme.opacity.o6)}`,
+    gradient: {
+      darkToNone: `linear-gradient(
+        90deg,
+        ${hexToRgba(Theme.color.dark, Theme.opacity.o7)} 0%,
+        ${hexToRgba(Theme.color.dark, Theme.opacity.hide)} 100%
+      )`,
+    },
   },
 };

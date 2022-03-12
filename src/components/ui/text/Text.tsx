@@ -5,8 +5,25 @@ import { IGeneralStyles, IText, TextType } from "./IText";
 
 export const commonStyles = (p: IGeneralStyles) => `
   color: ${p.color ? p.color : Theme.color.light};
-  font-size: ${p.fontSize ? p.fontSize : Theme.font.size.s24};
-  font-weight: ${p.fontWeight ? p.fontWeight : Theme.font.weight.bold};
+  font-size: ${
+    p.fontSize
+      ? p.fontSize
+      : p.textType === TextType.HEADING
+      ? Theme.font.size.s24
+      : p.textType === TextType.TEXT
+      ? Theme.font.size.s18
+      : Theme.font.size.s18
+  };
+  font-weight: ${
+    p.fontWeight
+      ? p.fontWeight
+      : p.textType === TextType.HEADING
+      ? Theme.font.weight.bold
+      : p.textType === TextType.TEXT
+      ? Theme.font.weight.regular
+      : Theme.font.weight.regular
+  };
+  // font-weight: ${p.fontWeight ? p.fontWeight : Theme.font.weight.bold};
   ${p.uppercase && "text-transform: uppercase;"}
 `;
 

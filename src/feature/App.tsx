@@ -1,15 +1,15 @@
 import styled from "styled-components";
-import { BottomBar } from "../components/BottomBar/BottomBar";
-import { TopBar } from "../components/topBar/TopBar";
+import BottomBar from "../components/bottomBar/BottomBar";
+import TopBar from "../components/topBar/TopBar";
 import { GlobalStyle } from "../styles/globalStyle/GlobalStyle";
-import { Bag } from "./sections/Bag";
+import Bag from "./sections/bag/Bag";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
   width: 100vw;
+  height: 100%;
 `;
 
 function App() {

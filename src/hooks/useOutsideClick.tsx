@@ -6,7 +6,10 @@ const useOutsideClickRef = (handler: (e: boolean) => void) => {
 
   useEffect(() => {
     // Set click ouside hanlder
-    const handleClickOutside = (event: { target: any }) => {
+    /************************************************************
+     * DA TIPIZZARE
+     ***********************************************************/
+    const handleClickOutside = (event: { target: Element | any }) => {
       // Check if referece exist & it is not hovered
       if (ref.current && !ref.current.contains(event.target)) {
         handler(false);
