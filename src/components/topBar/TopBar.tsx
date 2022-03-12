@@ -39,7 +39,7 @@ const TopBar: React.FC = () => {
               name: "searchbar",
               placeholder: "Cerca la ricetta",
               setFocus: (e) => setShowSearchbar(e),
-              onchange: (e) => console.log(e),
+              onchange: (e) => console.log(e.target.value),
             }}
           />
         </LeftWrapper>

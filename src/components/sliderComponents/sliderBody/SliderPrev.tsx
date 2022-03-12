@@ -1,10 +1,10 @@
 import React from "react";
-import SliderBox from "./sliderBox/SliderBox";
 import { TextType } from "../../ui/text/IText";
 import Text from "../../ui/text/Text";
 import { Theme } from "../../../costants/Theme";
 import { IBreakpoint } from "../../../hooks/useWindowSize";
 import { SliderWrapper } from "./SliderStyles";
+import SliderBox from "./sliderBox/SliderBox";
 
 export const SliderPrev: React.FC<{
   breakpoint: IBreakpoint;

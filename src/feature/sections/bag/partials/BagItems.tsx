@@ -29,6 +29,8 @@ export const BagItems: React.FC<{
   const [list, setList] = useState<any[]>(ingredients);
   const [isIconHide, setIsIconHide] = useState<"" | "NEXT" | "PREV">("");
   const [itemActive, setItemActive] = useState<string>("");
+  const [isNext, setIsNext] = useState<boolean>(false);
+  const [isPrev, setIsPrev] = useState<boolean>(false);
   const [actveElement, setActiveElement] = useState<"INGREDIENTS" | "RECIPES">(
     "INGREDIENTS"
   );
@@ -63,7 +65,7 @@ export const BagItems: React.FC<{
             height={64}
             onClick={() => {
               if (sliderIndex === 0) {
-                list[sliderIndex].foreach((el: any) => {
+                list[sliderIndex].map((el: any) => {
                   if (el.name.includes("Ricetta")) {
                     setSliderIndex(list.length - 1);
                     setList(ingredients);
@@ -72,6 +74,11 @@ export const BagItems: React.FC<{
                 });
               } else {
                 setSliderIndex(sliderIndex - 1);
+                if (isNext) {
+                  setIsNext(false);
+                } else {
+                  setIsPrev(true);
+                }
               }
             }}
           />
@@ -125,7 +132,7 @@ export const BagItems: React.FC<{
             height={64}
             onClick={() => {
               if (sliderIndex === list.length - 1) {
-                list[sliderIndex].foreach((el: any) => {
+                list[sliderIndex].map((el: any) => {
                   if (!el.name.includes("Ricetta")) {
                     setSliderIndex(0);
                     setList(recipes);
@@ -136,6 +143,11 @@ export const BagItems: React.FC<{
                 });
               } else {
                 setSliderIndex(sliderIndex + 1);
+                if (isPrev) {
+                  setIsPrev(false);
+                } else {
+                  setIsNext(true);
+                }
               }
             }}
           />
