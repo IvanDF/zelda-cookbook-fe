@@ -63,7 +63,7 @@ export const BagItems: React.FC<{
             height={64}
             onClick={() => {
               if (sliderIndex === 0) {
-                list[sliderIndex].map((el: any) => {
+                list[sliderIndex].foreach((el: any) => {
                   if (el.name.includes("Ricetta")) {
                     setSliderIndex(list.length - 1);
                     setList(ingredients);
@@ -125,7 +125,7 @@ export const BagItems: React.FC<{
             height={64}
             onClick={() => {
               if (sliderIndex === list.length - 1) {
-                list[sliderIndex].map((el: any) => {
+                list[sliderIndex].foreach((el: any) => {
                   if (!el.name.includes("Ricetta")) {
                     setSliderIndex(0);
                     setList(recipes);
