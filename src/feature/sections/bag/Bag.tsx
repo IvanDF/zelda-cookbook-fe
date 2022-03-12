@@ -1,12 +1,11 @@
 import { useState } from "react";
 import useWindowSize from "../../../hooks/useWindowSize";
-import { Wrapper } from "./BagStyles";
-import { BagItemDetail } from "./partials/BagItemDetail";
-import { BagItems } from "./partials/BagItems";
-
 // MOCK
 import Ingredients from "../../../mocks/ingredients.json";
 import Recipes from "../../../mocks/recipes.json";
+import { Wrapper } from "./BagStyles";
+import { BagItemDetail } from "./partials/BagItemDetail";
+import { BagItems } from "./partials/BagItems";
 
 const Bag: React.FC = () => {
   const { breakpoint } = useWindowSize();
@@ -29,8 +28,16 @@ const Bag: React.FC = () => {
     return result;
   };
 
-  const ingredients = sliderArrayHandler(Ingredients, 15);
-  const recipes = sliderArrayHandler(Recipes, 15);
+  const ingredients = sliderArrayHandler(
+    Ingredients,
+    breakpoint === "MOBILE" ? Ingredients.length : 15
+  );
+  const recipes = sliderArrayHandler(
+    Recipes,
+    breakpoint === "MOBILE" ? Recipes.length : 15
+  );
+
+  console.log(ingredients);
 
   return (
     <Wrapper>

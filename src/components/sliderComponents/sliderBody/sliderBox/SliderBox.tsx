@@ -1,9 +1,9 @@
 import React from "react";
-import useWindowSize from "../../hooks/useWindowSize";
+import useWindowSize from "../../../../hooks/useWindowSize";
 import {
   BottomCorners,
   TopCorners,
-} from "../../styles/globalStyle/GlobalStyle";
+} from "../../../../styles/globalStyle/GlobalStyle";
 import { BorderWrapper, BoxWrapper } from "./SliderBoxStyles";
 
 const SliderBox: React.FC<{

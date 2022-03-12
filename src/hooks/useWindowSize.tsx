@@ -7,7 +7,7 @@ const useWindowSize = () => {
   const breakpointHandler = (width: number) => {
     if (width <= 767) {
       return "MOBILE";
-    } else if (width >= 768 && width <= 1171) {
+    } else if (width >= 768 && width <= 1350) {
       return "TABLET";
     } else {
       return "DESKTOP";

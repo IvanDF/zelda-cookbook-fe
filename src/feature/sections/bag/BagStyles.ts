@@ -132,35 +132,32 @@ export const DetailModal = styled.div<{ device: string; isOpen: boolean }>`
   }
 `;
 
-export const SubMenu = styled.div`
-  display: flex;
-  gap: 20px;
-`;
-
-export const BagMenu = styled.div<{ isActive?: boolean }>`
+export const BagSlider = styled.div<{
+  isIconHide: "" | "PREV" | "NEXT";
+  device: IBreakpoint;
+}>`
   ${DFlex(IDFlex.CENTER)}
-  height: 60px;
-  width: 100%;
-  ${(p) => p.isActive && "color: red"}
-`;
-
-export const BagSlider = styled.div`
-  ${DFlex(IDFlex.CENTER)}
+  ${(p) => p.device !== "DESKTOP" && "height: 75%"};
   width: 100%;
   padding: 10px;
   svg {
     z-index: 10;
+    transition: all 300ms;
     &:first-child {
       position: relative;
       right: -40px;
       height: 100%;
       width: 119px;
+      visibility: ${({ isIconHide }) =>
+        isIconHide === "PREV" ? "hidden" : "visible"};
     }
     &:last-child {
       position: relative;
       left: -40px;
       height: 100%;
       width: 119px;
+      visibility: ${({ isIconHide }) =>
+        isIconHide === "NEXT" ? "hidden" : "visible"};
     }
 
     cursor: pointer;
@@ -183,45 +180,36 @@ export const BagSlider = styled.div`
   }
 `;
 
-export const SliderGroup = styled.div`
+export const SliderGroup = styled.div<{ device: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
   max-width: 100%;
+  height: 100%;
   overflow: hidden;
   & > div {
     transition: all 300ms ease-in-out;
   }
-  & > div:last-child {
-    mask-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(0, 0, 0, 0) 7%
-    );
-    mask-size: 100% 100%;
-    mask-repeat: no-repeat;
-  }
-  & > div:first-child {
-    mask-image: linear-gradient(
-      to left,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(0, 0, 0, 0) 7%
-    );
-    mask-size: 100% 100%;
-    mask-repeat: no-repeat;
-  }
-`;
-
-export const Slider = styled.div<{ device: IBreakpoint; hide?: boolean }>`
-  display: grid;
-  opacity: ${(p) => (p.hide ? "0" : "1")};
-  grid-template-columns: ${(p) =>
-    p.device === "DESKTOP" ? "repeat(5, 1fr)" : "repeat(3, 1fr)"};
-  grid-template-rows: repeat(3, 1fr);
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  gap: 15px;
-  margin: 0 10px;
-  transition: all 300ms ease;
+  ${({ device }) =>
+    device === "DESKTOP" &&
+    `
+& > div:last-child {
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0) 7%
+  );
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+}
+& > div:first-child {
+  mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0) 7%
+  );
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+}
+`}
 `;

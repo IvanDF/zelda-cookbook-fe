@@ -7,6 +7,8 @@ export enum IconType {
   NEXT_ICON = "NEXT_ICON",
   PREV_ICON = "PREV_ICON",
   CLOSE = "CLOSE",
+  RECEPES = "RECEPES",
+  INGREDIENTS = "INGREDIENTS",
 }
 
 export interface IIcon {
